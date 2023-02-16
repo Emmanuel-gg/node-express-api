@@ -27,15 +27,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    stock_quantity: {
+    stockQuantity: {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-    created_at: {
+    createdAt: {
       type: DATE(3),
       defaultValue: literal('CURRENT_TIMESTAMP(3)')
     },
-    updated_at: {
+    updatedAt: {
       type: DATE(3),
       defaultValue: literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)')
     }
