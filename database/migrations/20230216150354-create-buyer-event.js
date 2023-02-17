@@ -26,6 +26,11 @@ module.exports = {
       createdAt: {
         type: Sequelize.DATE(3),
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)')
+      },
+      // PROBLEM: Sequelize its sending updatedAt to the database
+      updatedAt: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)')
       }
     })
   },
