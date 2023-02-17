@@ -29,7 +29,7 @@ describe('BuyerEvent - Integrations tests', () => {
     const { id } = response.body
     const buyerEvent = await BuyerEvent.findByPk(id)
     expect(buyerEvent).not.toBeNull()
-    expect(buyerEvent).toMatchObject(expectedBuyerEvent)
+    expect(buyerEvent.dataValues).toMatchObject(expectedBuyerEvent)
   })
 
   const tests = [
