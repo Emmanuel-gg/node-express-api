@@ -11,7 +11,9 @@ describe('Buyer - Integrations tests', () => {
     const expectedBuyer = {
       name: 'ANameForABuyer',
       lastName: 'ThisIsALastName',
+      // document: '123456789',
       idType: 'TYPE1'
+
     }
     const response = await api
       .post('/api/buyer')
