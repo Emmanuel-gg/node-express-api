@@ -1,7 +1,6 @@
 'use strict'
 const {
   Model,
-  literal,
   DATE
 } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
@@ -26,11 +25,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.ENUM('purchase', 'return', 'visit', 'data_query', 'data_update', 'invoice_download'),
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isIn: [['purchase', 'return', 'visit', 'data_query', 'data_update', 'invoice_download']]
+      }
     },
     createdAt: {
-      type: DATE(3),
-      defaultValue: literal('CURRENT_TIMESTAMP(3)')
+      type: DATE(3)
     }
   }, {
     sequelize,

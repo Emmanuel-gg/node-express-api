@@ -9,12 +9,27 @@
 - 1.3) The script drops the database in case it exists, creates it, creates the tables and fill it with data dummy using faker and seeds of sequelize CLI.
 
 ## Posible improvements ##
+
+-- server --
+- Create a documentation of the API with swagger or postman
+- Create a simple logger of the application
+- Custom clases of error for every case (Not found, bad request, etc)
+
+-- database --
 - Create a table buyerTransactionProduct to store the products of each transaction.
 - Add status in every table for a soft delete.
+- Add the column transactionId in the table buyerEvent
+- Add a table for the buyer types
+- Add a table for the buyer events
 - In the script of the init database
 * Have an structure that if occurs an error, the script can rollback the changes and inform the user. 
 * Also if the database already exists, the script can ask the user if he wants to drop the database and create it again.
 * If the enviorement is prod not drop the database and not insert the data dummy.
+
+## Problems ##
+-- tests --
+- I can't create the server one time and use it in all the tests
+- It runs on port 3000 even though ENVIORMENT testing is passed in the command
 
 ## Requirements ##
 This are my specifications but its likely that you can run it with lower versions.

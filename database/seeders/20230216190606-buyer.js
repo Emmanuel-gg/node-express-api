@@ -10,7 +10,7 @@ const buyers = [...Array(1000)].map(() => {
   return ({
     name: faker.name.firstName(),
     lastName: faker.name.lastName(),
-    idType: ['TIPO1', 'TIPO2', 'TIPO3', 'TIPO4'][faker.datatype.number({
+    idType: ['TYPE1', 'TYPE2', 'TYPE3', 'TYPE4'][faker.datatype.number({
       min: 0,
       max: 3
     })],
