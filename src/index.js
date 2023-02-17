@@ -9,6 +9,7 @@ const cors = require('cors')
 
 // Routes
 const BuyerRouter = require('./router/Buyer/')
+const ProductRouter = require('./router/Product/')
 
 // Middleware that come after routes
 const handleNotFound = require('./middleware/handleNotFound.js')
@@ -19,6 +20,7 @@ app.use(express.json())
 
 // Assign routes
 app.use('/api/buyer', BuyerRouter)
+app.use('/api/product', ProductRouter)
 
 app.use(handleNotFound)
 

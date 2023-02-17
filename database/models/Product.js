@@ -17,7 +17,10 @@ module.exports = (sequelize, DataTypes) => {
   Product.init({
     name: {
       type: DataTypes.STRING(64),
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     description: {
       type: DataTypes.TEXT

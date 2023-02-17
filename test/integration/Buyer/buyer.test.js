@@ -62,7 +62,7 @@ describe('Buyer - Integrations tests', () => {
       }
     },
     {
-      name: 'should not create a buyer witha wrong idType',
+      name: 'should not create a buyer with a wrong idType',
       body: {
         name: 'ANameForABuyer',
         lastName: 'ThisIsALastName',

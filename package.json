@@ -7,10 +7,10 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "db:init": "node ./database/scripts/init.js",
-    "test": "jest --watchAll",
-    "test:unit": "jest --watchAll --testPathPattern=src/js/tests/unit-tests",
-    "test:integration": "jest --watchAll --testPathPattern=src/js/tests/integration",
-    "test:helpers": "jest --watchAll jest --findRelatedTests src/js/tests/unit-tests/helpers/helpers.test.js"
+    "test": "jest --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit",
+    "test:unit": "jest --watchAll --testPathPattern=src/js/tests/unit-tests --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit",
+    "test:integration": "jest --watchAll --testPathPattern=src/js/tests/integration --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit",
+    "test:helpers": "jest --watchAll jest --findRelatedTests src/js/tests/unit-tests/helpers/helpers.test.js --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit"
   },
   "author": "Emmanuel",
   "license": "ISC",
