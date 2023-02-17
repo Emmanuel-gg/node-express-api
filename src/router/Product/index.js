@@ -1,5 +1,6 @@
 const ProductRouter = require('express').Router()
 const ProductController = require('../../controller/Product')
+const { transformRequestQueryForFilter } = require('../utils')
 
 ProductRouter.use('/:id', function (req, res, next) {
   ProductController.getById(req.params.id)
@@ -36,8 +37,11 @@ ProductRouter.get('/:id?', (request, response, next) => {
     response.send(product)
     return
   }
-  // Get the list of products with a price greater than 50 and a quantity in stock less than 20.
-  ProductController.getAll()
+  const searchebleFields = ['price', 'stockQuantity']
+
+  const query = transformRequestQueryForFilter(request.query, { searchebleFields })
+
+  ProductController.getAll({ query })
     .then(products => {
       response.send(products)
     })
