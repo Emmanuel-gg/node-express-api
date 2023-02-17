@@ -7,12 +7,18 @@ const app = express()
 // Middleware that come before routes
 const cors = require('cors')
 
+// Routes
+const BuyerRouter = require('./router/Buyer/')
+
 // Middleware that come after routes
 const handleNotFound = require('./middleware/handleNotFound.js')
 const handleErrors = require('./middleware/handleErrors.js')
 
 app.use(cors())
 app.use(express.json())
+
+// Assign routes
+app.use('/api/buyer', BuyerRouter)
 
 app.use(handleNotFound)
 

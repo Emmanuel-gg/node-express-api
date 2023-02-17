@@ -7,7 +7,10 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "db:init": "node ./database/scripts/init.js",
-    "test": "set ENVIROMENT=testing && node --test ./test"
+    "test": "jest --watchAll",
+    "test:unit": "jest --watchAll --testPathPattern=src/js/tests/unit-tests",
+    "test:integration": "jest --watchAll --testPathPattern=src/js/tests/integration",
+    "test:helpers": "jest --watchAll jest --findRelatedTests src/js/tests/unit-tests/helpers/helpers.test.js"
   },
   "author": "Emmanuel",
   "license": "ISC",
