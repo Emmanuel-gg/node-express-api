@@ -25,11 +25,18 @@ module.exports = (sequelize, DataTypes) => {
   Buyer.init({
     name: {
       type: DataTypes.STRING(64),
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     lastName: {
       type: DataTypes.STRING(64),
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+
     },
     idType: {
       type: DataTypes.ENUM('TYPE1', 'TYPE2', 'TYPE3', 'TYPE4'),

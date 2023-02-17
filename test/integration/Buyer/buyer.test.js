@@ -24,11 +24,12 @@ describe('Buyer - Integrations tests', () => {
     const { id } = response.body
     const buyer = await Buyer.findByPk(id)
     expect(buyer).not.toBeNull()
-    expect(buyer).toMatchObject(expectedBuyer)
+
+    expect(buyer.dataValues).toMatchObject(expectedBuyer)
   })
   const tests = [
     {
-      name: 'should not create a buyer without name, lastName and idType',
+      name: 'should not create a buyer with null name, lastName and idType',
       body: {
       },
       expectedStatus: 400,
@@ -39,6 +40,24 @@ describe('Buyer - Integrations tests', () => {
           'Buyer.name cannot be null',
           'Buyer.lastName cannot be null',
           'Buyer.idType cannot be null'
+        ]
+      }
+    },
+    {
+      name: 'should not create a buyer with empty name, lastName and idType',
+      body: {
+        name: '',
+        lastName: '',
+        idType: ''
+      },
+      expectedStatus: 400,
+      expectedResponse: {
+        error: true,
+        message: 'One or more fields are invalid',
+        errors: [
+          'Validation notEmpty on name failed',
+          'Validation notEmpty on lastName failed',
+          'Validation isIn on idType failed'
         ]
       }
     },
