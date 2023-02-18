@@ -33,4 +33,26 @@ BuyerRouter.post('/', (request, response, next) => {
     })
 })
 
+BuyerRouter.get('/', (request, response, next) => {
+  const { page, perPage } = request.query
+  BuyerController.getAll({ query: { page: parseInt(page), perPage: parseInt(perPage) } })
+    .then(objectResponse => {
+      response.status(200).send(objectResponse)
+    })
+    .catch(error => {
+      next(error)
+    })
+})
+
+BuyerRouter.get('/:id', (request, response, next) => {
+  BuyerController.getTransactionsAndEvents(request.buyer.id)
+    .then((objectResponse) => {
+      response.status(200).send(objectResponse)
+    })
+    .catch(error => {
+      next(error)
+    })
+    
+})
+
 module.exports = BuyerRouter

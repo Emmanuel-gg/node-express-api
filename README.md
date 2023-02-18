@@ -7,6 +7,10 @@
 - 1.1) The script is in the folder `database/scripts` and the file is `init.js`
 - 1.2) The script is executed with the command `npm run db:init -- [env]` [env] = dev | test | prod if not send gets the value from the .env in ENVIORMENT or default to dev
 - 1.3) The script drops the database in case it exists, creates it, creates the tables and fill it with data dummy using faker and seeds of sequelize CLI.
+- 2) Using express and sequelize, we can create the REST API.
+- 2.1) The server is in the folder `server` and the file is `index.js`
+- 2.2) The server is executed with the command `npm run dev`
+- 2.3) The tests are in the folder `server/tests` and the file is `index.js` and are done witj jest and supertest.
 
 ## Posible improvements ##
 

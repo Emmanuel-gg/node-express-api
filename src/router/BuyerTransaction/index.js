@@ -32,12 +32,6 @@ BuyerTransactionRouter.get('/', (request, response, next) => {
       if (request.query.report === 'transactions-event-from-buyers') {
         BuyerEventController.getAllWithBuyerTransaction()
           .then(eventsResult => {
-            const transactionWithEvent = eventsResult.map(event => event.buyerTransactionId)
-            console.log({ transactionWithEvent })
-
-            const transactionId = buyerTransactionReport.map(transaction => transaction.id)
-            console.log({ transactionId })
-
             buyerTransactionReport.map((transaction, index) => {
               const eventResult = eventsResult.find(event => {
                 return event.buyerTransactionId === transaction.id
