@@ -30,6 +30,15 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
+    document: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: true,
+        isNumeric: true
+      }
+    },
     lastName: {
       type: DataTypes.STRING(64),
       allowNull: false,

@@ -1,6 +1,6 @@
 const { Op } = require('sequelize')
 const bd = require('../../../database/models/index.js')
-const { BuyerTransaction, Buyer, sequelize } = bd
+const { BuyerTransaction, sequelize } = bd
 
 const BuyerTransactionController = {
   save: async (total, tax, buyerId) => {

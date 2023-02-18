@@ -7,7 +7,7 @@ const enviorments = {
   prod: 'production'
 }
 
-let argsEnv = enviorments[process.argv[2]] || process.env.ENVIORMENT.toLowerCase() || 'development'
+let argsEnv = enviorments[process.argv[2]] || process.env.ENVIORMENT?.toLowerCase() || 'development'
 
 if (argsEnv === 'testing') {
   argsEnv = 'test'

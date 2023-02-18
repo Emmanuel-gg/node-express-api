@@ -9,6 +9,15 @@ const ERROR_HANDLERS = {
     })
   },
 
+  SequelizeUniqueConstraintError: (res, error) => {
+    const errors = error.errors.map(e => e.message)
+    res.status(400).send({
+      error: true,
+      message: 'One or more fields are invalid',
+      errors
+    })
+  },
+
   defaultError: (res, error) => {
     console.error(error.name)
     res.status(500).send({

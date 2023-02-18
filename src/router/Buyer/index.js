@@ -22,9 +22,9 @@ BuyerRouter.use('/:id/event', BuyerEventRouter)
 
 BuyerRouter.post('/', (request, response, next) => {
   const { body } = request
-  const { name, lastName, idType } = body
+  const { name, lastName, idType, document } = body
 
-  BuyerController.save(name, lastName, idType)
+  BuyerController.save(name, lastName, idType, document)
     .then(objectResponse => {
       response.status(201).send(objectResponse)
     })

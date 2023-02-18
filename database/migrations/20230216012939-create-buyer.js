@@ -13,6 +13,11 @@ module.exports = {
         type: Sequelize.STRING(64),
         allowNull: false
       },
+      document: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true
+      },
       lastName: {
         type: Sequelize.STRING(64),
         allowNull: false
