@@ -1,8 +1,7 @@
 'use strict'
 const {
   Model,
-  DATE,
-  literal
+  DATE
 } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Buyer extends Model {
@@ -26,23 +25,40 @@ module.exports = (sequelize, DataTypes) => {
   Buyer.init({
     name: {
       type: DataTypes.STRING(64),
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    document: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: true,
+        isNumeric: true
+      }
     },
     lastName: {
       type: DataTypes.STRING(64),
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+
     },
     idType: {
-      type: DataTypes.ENUM('TIPO1', 'TIPO2', 'TIPO3', 'TIPO4'),
-      allowNull: false
+      type: DataTypes.ENUM('TYPE1', 'TYPE2', 'TYPE3', 'TYPE4'),
+      allowNull: false,
+      validate: {
+        isIn: [['TYPE1', 'TYPE2', 'TYPE3', 'TYPE4']]
+      }
     },
     createdAt: {
-      type: DATE(3),
-      defaultValue: literal('CURRENT_TIMESTAMP(3)')
+      type: DATE(3)
     },
     updatedAt: {
-      type: DATE(3),
-      defaultValue: literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)')
+      type: DATE(3)
     }
   }, {
     sequelize,

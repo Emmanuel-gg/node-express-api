@@ -13,12 +13,17 @@ module.exports = {
         type: Sequelize.STRING(64),
         allowNull: false
       },
+      document: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true
+      },
       lastName: {
         type: Sequelize.STRING(64),
         allowNull: false
       },
       idType: {
-        type: Sequelize.ENUM('TIPO1', 'TIPO2', 'TIPO3', 'TIPO4'),
+        type: Sequelize.ENUM('TYPE1', 'TYPE2', 'TYPE3', 'TYPE4'),
         allowNull: false
       },
       createdAt: {
@@ -27,7 +32,7 @@ module.exports = {
       },
       updatedAt: {
         type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)')
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)')
       }
     })
   },

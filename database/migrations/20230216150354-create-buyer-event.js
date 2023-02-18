@@ -19,11 +19,25 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
+      buyerTransactionId: {
+        type: Sequelize.INTEGER
+        /* references: {
+          model: 'BuyerTransaction',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE' */
+      },
       name: {
         type: Sequelize.ENUM('purchase', 'return', 'visit', 'data_query', 'data_update', 'invoice_download'),
         allowNull: false
       },
       createdAt: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)')
+      },
+      // PROBLEM: Sequelize its sending updatedAt to the database
+      updatedAt: {
         type: Sequelize.DATE(3),
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)')
       }

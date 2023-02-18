@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon src/index.js -- --enviorment=dev",
     "db:init": "node ./database/scripts/init.js",
-    "test": "set ENVIROMENT=testing && node --test ./test"
+    "test": "jest --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test",
+    "test:unit": "jest --watchAll --testPathPattern=tests/unit --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test",
+    "test:integration": "jest --watchAll --testPathPattern=tests/integration --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test",
+    "test:helpers": "jest --watchAll jest --findRelatedTests tests/unit/helpers/helpers.test.js --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test"
   },
   "author": "Emmanuel",
   "license": "ISC",

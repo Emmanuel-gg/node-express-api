@@ -1,7 +1,6 @@
 'use strict'
 const {
   Model,
-  literal,
   DATE
 } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
@@ -18,26 +17,33 @@ module.exports = (sequelize, DataTypes) => {
   Product.init({
     name: {
       type: DataTypes.STRING(64),
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     description: {
       type: DataTypes.TEXT
     },
     price: {
       type: DataTypes.FLOAT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isNumeric: true
+      }
     },
     stockQuantity: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
+      defaultValue: 0,
+      validate: {
+        isNumeric: true
+      }
     },
     createdAt: {
-      type: DATE(3),
-      defaultValue: literal('CURRENT_TIMESTAMP(3)')
+      type: DATE(3)
     },
     updatedAt: {
-      type: DATE(3),
-      defaultValue: literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)')
+      type: DATE(3)
     }
   }, {
     sequelize,
