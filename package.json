@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon src/index.js -- --enviorment=dev",
     "db:init": "node ./database/scripts/init.js",
-    "test": "jest --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit",
-    "test:unit": "jest --watchAll --testPathPattern=src/js/tests/unit-tests --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit",
-    "test:integration": "jest --watchAll --testPathPattern=src/js/tests/integration --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit",
-    "test:helpers": "jest --watchAll jest --findRelatedTests src/js/tests/unit-tests/helpers/helpers.test.js --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit"
+    "test": "jest --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test",
+    "test:unit": "jest --watchAll --testPathPattern=tests/unit --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test",
+    "test:integration": "jest --watchAll --testPathPattern=tests/integration --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test",
+    "test:helpers": "jest --watchAll jest --findRelatedTests tests/unit/helpers/helpers.test.js --watchAll --no-cache  --detectOpenHandles --runInBand --forceExit --enviorment=test"
   },
   "author": "Emmanuel",
   "license": "ISC",

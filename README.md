@@ -10,6 +10,8 @@
 
 ## Posible improvements ##
 
+- Pagination in all the endpoints
+
 -- server --
 - Create a documentation of the API with swagger or postman
 - Create a simple logger of the application
@@ -29,7 +31,6 @@
 ## Problems ##
 -- tests --
 - I can't create the server one time and use it in all the tests
-- It runs on port 3000 even though ENVIORMENT testing is passed in the command
 
 ## Requirements ##
 This are my specifications but its likely that you can run it with lower versions.

@@ -34,7 +34,7 @@ ProductRouter.get('/:id?', (request, response, next) => {
   // Get extra parameters
 
   if (product) {
-    response.send(product)
+    response.status(200).send(product)
     return
   }
   const searchebleFields = ['price', 'stockQuantity']
@@ -43,7 +43,7 @@ ProductRouter.get('/:id?', (request, response, next) => {
 
   ProductController.getAll({ query })
     .then(products => {
-      response.send(products)
+      response.status(200).send(products)
     })
     .catch(error => {
       next(error)
