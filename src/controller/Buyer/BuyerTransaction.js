@@ -46,7 +46,7 @@ const BuyerTransactionController = {
         const includeOptions = {}
         includeOptions.model = bd[includeSplit[0].charAt(0).toUpperCase() + includeSplit[0].slice(1)]
         includeOptions.as = includeSplit[0]
-        if (includeSplit.length) {
+        if (includeSplit.length > 1 && includeSplit[1].length) {
           includeOptions.attributes = includeSplit[1].split(':')
         }
 
@@ -62,21 +62,7 @@ const BuyerTransactionController = {
       findAllOptions.attributes = attributes
     }
     return BuyerTransaction.findAll(
-      {
-        where,
-        attributes: [
-          [sequelize.fn('sum', sequelize.col('total')), 'sumTotal']
-        ],
-        include: [
-          {
-            model: Buyer,
-            attributes: ['id', 'name', 'lastName'],
-            as: 'buyer'
-          }
-        ],
-        group: ['buyer.id']
-
-      }
+      findAllOptions
     )
   }
 }

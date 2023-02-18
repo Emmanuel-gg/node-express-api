@@ -14,7 +14,7 @@ BuyerTransactionRouter.get('/', (request, response, next) => {
       condition: 'gt:40',
       type: 'sum',
       field: 'total',
-      include: ['buyer.id:name:lastName'],
+      include: ['buyer'],
       group: 'buyer.id'
     }
   }
