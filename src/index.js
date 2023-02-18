@@ -1,3 +1,12 @@
+const envArgs = process.argv.find(arg => arg.includes('--enviorment='))?.split('=')[1]
+const enviorments = {
+  dev: 'DEVELOPMENT',
+  test: 'TESTING',
+  prod: 'PRODUCTION'
+}
+const env = enviorments[envArgs] || process.env.ENVIORMENT || 'DEVELOPMENT'
+process.env.ENVIORMENT = env
+
 require('dotenv').config()
 
 // Initialize express
@@ -26,8 +35,8 @@ app.use(handleNotFound)
 
 app.use(handleErrors)
 
-const PORT = process.env[`${process.env.ENVIORMENT}_PORT`] || 3000
-console.log(`${process.env.ENVIORMENT}_PORT`)
+const PORT = process.env[`${env}_PORT`] || 3000
+console.log(`${env}_PORT`)
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })

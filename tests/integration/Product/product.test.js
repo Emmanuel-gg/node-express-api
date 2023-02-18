@@ -3,6 +3,7 @@ const supertest = require('supertest')
 const { server } = require('../../../src/index')
 const api = supertest(server)
 const { Product } = require('../../../database/models/index.js')
+const { Op } = require('sequelize')
 
 let productId = null
 describe('Product - Integrations tests', () => {
@@ -42,6 +43,26 @@ describe('Product - Integrations tests', () => {
     const products = await Product.findAll()
     expect(response.body).toHaveLength(products.length)
   })
+
+  test('should get products whit price greather than 50 and stock less than 20', async () => {
+    const response = await api
+      .get('/api/product?price.gt=50&stockQuantity.lt=20')
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+    expect(response.body).toBeInstanceOf(Array)
+    const expectedProducts = await Product.findAll({
+      where: {
+        price: {
+          [Op.gt]: 50
+        },
+        stockQuantity: {
+          [Op.lt]: 20
+        }
+      }
+    })
+    expect(response.body).toHaveLength(expectedProducts.length)
+  })
+
   test('should delete a product', async () => {
     const response = await api
       .delete(`/api/product/${productId}`)
@@ -51,6 +72,7 @@ describe('Product - Integrations tests', () => {
     const product = await Product.findByPk(productId)
     expect(product).toBeNull()
   })
+
   const tests = [
     {
       name: 'should not create a product with null name and price',

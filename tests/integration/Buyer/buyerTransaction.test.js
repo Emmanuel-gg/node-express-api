@@ -15,7 +15,7 @@ describe('BuyerTransaction - Integrations tests', () => {
       total: 100,
       tax: 10
     }
-    const expectedBuyerTransaction = {
+    const expectedTransaction = {
       ...buyerTransactionToCreate,
       buyerId
     }
@@ -31,7 +31,7 @@ describe('BuyerTransaction - Integrations tests', () => {
     const { id } = response.body
     const buyerTransaction = await BuyerTransaction.findByPk(id)
     expect(buyerTransaction).not.toBeNull()
-    expect(buyerTransaction.dataValues).toMatchObject(expectedBuyerTransaction)
+    expect(buyerTransaction.dataValues).toMatchObject(expectedTransaction)
   })
   const buyerId = 1
   const tests = [
