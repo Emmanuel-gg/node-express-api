@@ -11,16 +11,16 @@
 ## Posible improvements ##
 
 - Pagination in all the endpoints
-
+- Validate that only can exist one BuyerEvent purchase per transaction
 -- server --
 - Create a documentation of the API with swagger or postman
 - Create a simple logger of the application
 - Custom clases of error for every case (Not found, bad request, etc)
 
 -- database --
+- Let BuyerTransaction have many BuyerEvents
 - Create a table buyerTransactionProduct to store the products of each transaction.
 - Add status in every table for a soft delete.
-- Add the column transactionId in the table buyerEvent
 - Add a table for the buyer types
 - Add a table for the buyer events
 - In the script of the init database
@@ -29,6 +29,8 @@
 * If the enviorement is prod not drop the database and not insert the data dummy.
 
 ## Problems ##
+-- database --
+- BuyerEvents doesn't recognize the association with BuyerTransaction
 -- tests --
 - I can't create the server one time and use it in all the tests
 

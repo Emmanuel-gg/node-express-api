@@ -19,6 +19,15 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
+      buyerTransactionId: {
+        type: Sequelize.INTEGER
+        /* references: {
+          model: 'BuyerTransaction',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE' */
+      },
       name: {
         type: Sequelize.ENUM('purchase', 'return', 'visit', 'data_query', 'data_update', 'invoice_download'),
         allowNull: false

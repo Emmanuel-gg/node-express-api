@@ -21,7 +21,8 @@ const ProductController = {
   getById: async (id) => {
     return Product.findByPk(id)
   },
-  getAll: async ({ query: { price, stockQuantity } }) => {
+  getAll: async (options) => {
+    const { query: { price, stockQuantity } } = options
     const where = {}
     if (price) {
       where.price = {

@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         isIn: [['purchase', 'return', 'visit', 'data_query', 'data_update', 'invoice_download']]
       }
     },
+    buyerTransactionId: {
+      type: DataTypes.INTEGER
+    },
     createdAt: {
       type: DATE(3)
     }
